@@ -29,7 +29,7 @@ export class LoginComponent extends HTMLElement {
 
           <p class="register-text">
             ¿No tienes cuenta?
-            <a href="#" id="register-link">Regístrate aquí</a>
+            <a href="../../pages/register.html" id="register-link">Regístrate aquí</a>
           </p>
         </form>
       </div>

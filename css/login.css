@@ -99,6 +99,7 @@ input:focus {
 .register-text a:hover {
   color: #3c6255;
   text-decoration: underline;
+  opacity: 1;
 }
 
 @keyframes fadeIn {
