@@ -1,5 +1,17 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f9f9f9;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+main {
+  margin-top: 90px;
+  padding: 2rem;
 }
