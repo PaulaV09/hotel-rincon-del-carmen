@@ -1,14 +1,3 @@
-:host {
-  --color-primary: #3c6255;
-  --color-secondary: #eae7b1;
-  --color-accent: #a6bb8d;
-  --color-bg: #f9f9f9;
-  --color-text: #333333;
-  --color-white: #ffffff;
-  --font-title: "Playfair Display", serif;
-  --font-body: "Poppins", sans-serif;
-}
-
 .navbar {
   position: fixed;
   top: 0;
@@ -23,7 +12,7 @@
   transition: all 0.3s ease;
   z-index: 1000;
   border-bottom: 1px solid rgba(60, 98, 85, 0.1);
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .navbar.scrolled {
@@ -32,7 +21,7 @@
 }
 
 .logo {
-  font-family: var(--font-title);
+  font-family: "Playfair Display", serif;
   font-size: 1.7rem;
   font-weight: 600;
   color: #3c6255;
@@ -45,7 +34,7 @@
 }
 
 .nav-links a {
-  font-family: var(--font-body);
+  font-family: "Poppins", sans-serif;
   text-decoration: none;
   color: #333333;
   font-weight: 500;
@@ -78,7 +67,7 @@
 }
 
 .auth-buttons button {
-  font-family: var(--font-body);
+  font-family: "Poppins", sans-serif;
   border: none;
   border-radius: 25px;
   padding: 0.6rem 1.2rem;
@@ -94,35 +83,35 @@
 }
 
 .btn-login {
-    background-color: transparent;
-    border: 2px solid #3c6255; 
-    color: #3c6255;
+  background-color: transparent;
+  border: 2px solid #3c6255;
+  color: #3c6255;
 }
 
 .btn-login:hover {
-    background-color: #3c6255;
-    color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(60, 98, 85, 0.3);
+  background-color: #3c6255;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(60, 98, 85, 0.3);
 }
 
 .btn-register {
-    background-color: #a6bb8d;
-    color: #333333;
-    border: 2px solid #a6bb8d; 
+  background-color: #a6bb8d;
+  color: #333333;
+  border: 2px solid #a6bb8d;
 }
 
 .btn-register:hover {
-    background-color: #3c6255;
-    border-color: #3c6255;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(60, 98, 85, 0.3);
-    color: #ffffff;
+  background-color: #3c6255;
+  border-color: #3c6255;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(60, 98, 85, 0.3);
+  color: #ffffff;
 }
 
 .user-menu {
   position: relative;
-  font-family: var(--font-body);
+  font-family: "Poppins", sans-serif;
   color: #333333;
   cursor: pointer;
 }
@@ -163,7 +152,7 @@
   color: #333333;
   text-decoration: none;
   transition: background 0.3s ease;
-  font-family: var(--font-body);
+  font-family: "Poppins", sans-serif;
 }
 
 .dropdown a:hover {
@@ -213,7 +202,7 @@
     flex-direction: column;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    font-family: var(--font-body);
+    font-family: "Poppins", sans-serif;
   }
 
   .mobile-menu.active {
