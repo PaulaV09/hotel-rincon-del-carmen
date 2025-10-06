@@ -18,8 +18,7 @@ export class NavComponent extends HTMLElement {
 
   scrollHandler = () => {
     const nav = this.querySelector(".navbar");
-    if (!nav) return; 
-
+    if (!nav) return;
     if (window.scrollY > 50) {
       nav.classList.add("scrolled");
     } else {
@@ -38,79 +37,113 @@ export class NavComponent extends HTMLElement {
     if (toggle && menu) {
       toggle.addEventListener("click", () => {
         menu.classList.toggle("active");
-        toggle.classList.toggle("is-open"); 
+        toggle.classList.toggle("is-open");
       });
 
-      menu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-              menu.classList.remove('active');
-              toggle.classList.remove('is-open');
-          });
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("active");
+          toggle.classList.remove("is-open");
+        });
       });
     }
   }
 
   handleLogout() {
     const logoutBtns = this.querySelectorAll("#logout");
-
-    logoutBtns.forEach(logoutBtn => {
-      logoutBtn.addEventListener("click", (e) => {
-        e.preventDefault(); 
-        localStorage.removeItem("userName");
-        location.reload();
+    logoutBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        window.location.href = "../../index.html";
       });
     });
   }
 
   render() {
-    const user = localStorage.getItem("userName");
+    const userData = JSON.parse(localStorage.getItem("currentUser"));
+    const role = userData?.role || null;
+    const userName = userData?.fullName?.split(" ")[0] || null;
+
+    let navLinks = "";
+    let userSection = "";
+    let mobileLinks = "";
+
+    // NAV PÚBLICO
+    if (!role) {
+      navLinks = `
+        <a href="../../index.html">Inicio</a>
+        <a href="../../pages/user/reservas.html">Reservas</a>
+        <a href="../../pages/user/contacto.html">Contacto</a>
+      `;
+      userSection = `
+        <div class="auth-buttons">
+          <button class="btn btn-login" onclick="location.href='../../pages/public/login.html'">Login</button>
+          <button class="btn btn-register" onclick="location.href='../../pages/public/register.html'">Registro</button>
+        </div>
+      `;
+      mobileLinks = `
+        <a href="../../index.html">Inicio</a>
+        <a href="../../pages/user/reservas.html">Reservas</a>
+        <a href="../../pages/user/contacto.html">Contacto</a>
+        <a href="../../pages/public/login.html">Login</a>
+        <a href="../../pages/public/register.html">Registro</a>
+      `;
+    } else if (role === "user") {
+      navLinks = `
+        <a href="../../pages/user/inicio.html">Inicio</a>
+        <a href="../../pages/user/reservas.html">Reservas</a>
+        <a href="../../pages/user/contacto.html">Contacto</a>
+      `;
+      userSection = `
+        <div class="user-menu">
+          <span>Hola, ${userName} 👋</span>
+          <div class="dropdown">
+            <a href="#" id="logout">Cerrar sesión</a>
+          </div>
+        </div>
+      `;
+      mobileLinks = `
+        <a href="../../pages/user/inicio.html">Inicio</a>
+        <a href="../../pages/user/reservas.html">Reservas</a>
+        <a href="../../pages/user/contacto.html">Contacto</a>
+        <a href="#" id="logout">Cerrar sesión</a>
+      `;
+    } else if (role === "admin") {
+      navLinks = `
+        <a href="../../pages/admin/dashboard.html">Gestionar habitaciones</a>
+        <a href="../../pages/admin/reservas.html">Gestionar reservas</a>
+      `;
+      userSection = `
+        <div class="user-menu">
+          <span>${userName} (Admin) ⚙️</span>
+          <div class="dropdown">
+            <a href="#" id="logout">Cerrar sesión</a>
+          </div>
+        </div>
+      `;
+      mobileLinks = `
+        <a href="../../pages/admin/dashboard.html">Gestionar habitaciones</a>
+        <a href="../../pages/admin/reservas.html">Gestionar reservas</a>
+        <a href="#" id="logout">Cerrar sesión</a>
+      `;
+    }
 
     this.innerHTML = /* html */ `
       <link rel="stylesheet" href="../../css/nav.css">
       <nav class="navbar">
         <div class="logo">Hotel Rincón del Mar</div>
-
-        <div class="nav-links">
-          <a href="index.html">Inicio</a>
-          <a href="reservas.html">Reservas</a>
-          <a href="contacto.html">Contacto</a> </div>
-
-        ${
-          user
-            ? `
-            <div class="user-menu">
-              <span>Hola, ${user.split(' ')[0]} 👋</span>
-              <div class="dropdown">
-                <a href="#">Mi perfil</a>
-                <a href="#" id="logout">Cerrar sesión</a>
-              </div>
-            </div>
-            `
-            : `
-            <div class="auth-buttons">
-              <button class="btn btn-login" onclick="location.href='../../pages/login.html'">Login</button>
-              <button class="btn btn-register" onclick="location.href='../../pages/registro.html'">Registro</button>
-            </div>
-            `
-        }
-
+        <div class="nav-links">${navLinks}</div>
+        ${userSection}
         <div class="menu-toggle" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
       </nav>
 
       <div class="mobile-menu">
-        <a href="index.html">Inicio</a>
-        <a href="reservas.html">Reservas</a>
-        <a href="contacto.html">Contacto</a>
-        ${
-          user
-            ? `<a href="#" id="logout">Cerrar sesión</a>`
-            : `<a href="login.html">Login</a>
-               <a href="registro.html">Registro</a>`
-        }
+        ${mobileLinks}
       </div>
     `;
   }
