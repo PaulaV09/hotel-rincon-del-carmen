@@ -132,7 +132,7 @@ export class NavComponent extends HTMLElement {
     this.innerHTML = /* html */ `
       <link rel="stylesheet" href="../../css/nav.css">
       <nav class="navbar">
-        <div class="logo">Hotel Rincón del Mar</div>
+        <div class="logo"><img src="../../assets/images/logo.png" alt="Logo del hotel" class="footer-logo" style="width: 5%"> Hotel Rincón del Carmen</div>
         <div class="nav-links">${navLinks}</div>
         ${userSection}
         <div class="menu-toggle" aria-label="Abrir menú">
