@@ -88,8 +88,8 @@ export class NavComponent extends HTMLElement {
             `
             : `
             <div class="auth-buttons">
-              <button class="btn btn-login" onclick="location.href='login.html'">Login</button>
-              <button class="btn btn-register" onclick="location.href='registro.html'">Registro</button>
+              <button class="btn btn-login" onclick="location.href='../../pages/login.html'">Login</button>
+              <button class="btn btn-register" onclick="location.href='../../pages/registro.html'">Registro</button>
             </div>
             `
         }
