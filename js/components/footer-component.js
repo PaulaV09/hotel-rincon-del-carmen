@@ -31,9 +31,8 @@ export class FooterComponent extends HTMLElement {
             <h4>Explora</h4>
             <ul>
               <li><a href="../../index.html">Inicio</a></li>
-              <li><a href="../../pages/habitaciones.html">Habitaciones</a></li>
-              <li><a href="../../pages/reservas.html">Reservas</a></li>
-              <li><a href="../../pages/contacto.html">Contacto</a></li>
+              <li><a href="../../pages/user/reservas.html">Reservas</a></li>
+              <li><a href="../../pages/user/contacto.html">Contacto</a></li>
             </ul>
           </div>
 
