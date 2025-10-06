@@ -5,7 +5,7 @@
   min-height: 100vh;
   background: linear-gradient(rgba(60, 98, 85, 0.85), rgba(60, 98, 85, 0.85));
   font-family: "Poppins", sans-serif;
-  padding: 2rem; 
+  padding: 2rem;
   box-sizing: border-box;
 }
 
@@ -72,7 +72,7 @@ input:focus {
 }
 
 .btn-register {
-  grid-column: span 2; 
+  grid-column: span 2;
   width: 100%;
   padding: 1rem;
   background-color: #3c6255;
@@ -130,7 +130,7 @@ input:focus {
   }
 
   .register-form {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .btn-register {
