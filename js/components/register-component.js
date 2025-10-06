@@ -1,3 +1,5 @@
+import { postInfo, findInfo } from "../api/crudApi.js";
+
 export class RegisterComponent extends HTMLElement {
   constructor() {
     super();
@@ -6,6 +8,67 @@ export class RegisterComponent extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.addEvents();
+  }
+
+  addEvents() {
+    const form = this.shadowRoot.querySelector(".register-form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const identificacion = this.shadowRoot
+        .querySelector("#identificacion")
+        .value.trim();
+      const fullName = this.shadowRoot.querySelector("#nombre").value.trim();
+      const nacionalidad = this.shadowRoot
+        .querySelector("#nacionalidad")
+        .value.trim();
+      const email = this.shadowRoot.querySelector("#email").value.trim();
+      const telefono = this.shadowRoot.querySelector("#telefono").value.trim();
+      const password = this.shadowRoot.querySelector("#password").value.trim();
+
+      if (
+        !identificacion ||
+        !fullName ||
+        !nacionalidad ||
+        !email ||
+        !telefono ||
+        !password
+      ) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      const existingUser = (await findInfo("users", { email })) || [];
+      const existingId = (await findInfo("users", { identificacion })) || [];
+
+      if (existingUser.length > 0 || existingId.length > 0) {
+        alert("Ya existe un usuario con este correo o identificación.");
+        return;
+      }
+
+      const newUser = {
+        identificacion,
+        fullName,
+        nacionalidad,
+        email,
+        telefono,
+        password,
+        role: "user",
+      };
+
+      try {
+        await postInfo("users", newUser);
+        alert("✅ Registro exitoso. Ahora puedes iniciar sesión.");
+        form.reset();
+
+        window.location.href = "../../pages/login.html";
+      } catch (error) {
+        console.error("Error al registrar usuario:", error);
+        alert("❌ No se pudo completar el registro. Intenta nuevamente.");
+      }
+    });
   }
 
   render() {
@@ -30,6 +93,7 @@ export class RegisterComponent extends HTMLElement {
                     <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Ej: Colombiana" required />
                 </div>
             </div>
+
             <div class="columna">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -46,6 +110,7 @@ export class RegisterComponent extends HTMLElement {
                     <input type="password" id="password" name="password" placeholder="Crea una contraseña" required />
                 </div>
             </div>
+
           <button type="submit" class="btn-register">Registrarme</button>
         </form>
 
