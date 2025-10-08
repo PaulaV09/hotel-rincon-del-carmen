@@ -65,7 +65,6 @@ export class LandingComponent extends HTMLElement {
         @import "../../css/landing.css";
       </style>
 
-      <!-- HERO -->
       <section class="hero" id="hero">
         <div class="hero-media" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
