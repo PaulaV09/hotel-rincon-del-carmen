@@ -1,3 +1,4 @@
+// booking-component.js
 import { getInfo } from "../api/crudApi.js";
 
 export class BookingComponent extends HTMLElement {
@@ -18,7 +19,7 @@ export class BookingComponent extends HTMLElement {
 
   async loadRooms() {
     try {
-      this.rooms = await getInfo("rooms");
+      this.rooms = (await getInfo("rooms")) || [];
     } catch (error) {
       console.error("Error cargando habitaciones:", error);
     }
@@ -39,12 +40,15 @@ export class BookingComponent extends HTMLElement {
     const start = new Date(startDate);
     const end = new Date(endDate);
     if (end <= start) {
-      this.showMessage("La fecha final debe ser posterior a la inicial.", "error");
+      this.showMessage(
+        "La fecha final debe ser posterior a la inicial.",
+        "error"
+      );
       return;
     }
 
     try {
-      const bookings = await getInfo("bookings");
+      const bookings = (await getInfo("bookings")) || [];
 
       this.filteredRooms = this.rooms.filter((room) => {
         if (guests > room.maxGuests) return false;
@@ -78,7 +82,7 @@ export class BookingComponent extends HTMLElement {
           "info"
         );
       } else {
-        this.showMessage("", ""); 
+        this.showMessage("", "");
       }
 
       this.renderRoomList(this.filteredRooms);
@@ -126,12 +130,11 @@ export class BookingComponent extends HTMLElement {
   }
 
   openRoomDetail(room) {
-    const modalEvent = new CustomEvent("open-room-detail", {
-      detail: room,
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(modalEvent);
+    const modal = document.createElement("detalle-component");
+    modal.setAttribute("room-id", room.id);
+    document.body.appendChild(modal);
+
+    document.body.style.overflow = "hidden";
   }
 
   render() {
