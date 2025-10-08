@@ -26,6 +26,9 @@
   font-weight: 600;
   color: #3c6255;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-links {
@@ -74,12 +77,6 @@
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
-}
-
-.btn-login {
-  background-color: transparent;
-  border: 1px solid #3c6255;
-  color: #3c6255;
 }
 
 .btn-login {
@@ -140,6 +137,7 @@
   flex-direction: column;
   min-width: 160px;
   overflow: hidden;
+  z-index: 2000;
 }
 
 .user-menu:hover .dropdown {
@@ -173,51 +171,95 @@
 
 .menu-toggle {
   display: none;
-  font-size: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
   cursor: pointer;
-  color: #3c6255;
+  width: 28px;
+  height: 22px;
+  gap: 5px;
+  z-index: 1500;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #3c6255;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.is-open .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.menu-toggle.is-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background: #ffffff;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.mobile-menu.active {
+  display: flex;
+  animation: slideDown 0.3s ease;
+}
+
+.mobile-menu a {
+  padding: 1rem;
+  color: #333333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-menu a:hover {
+  background: #a6bb8d;
+  color: #ffffff;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
+  .nav-links,
   .auth-buttons,
   .user-menu {
     display: none;
   }
 
   .menu-toggle {
-    display: block;
-  }
-
-  .mobile-menu {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #ffffff;
-    width: 100%;
-    flex-direction: column;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    font-family: "Poppins", sans-serif;
-  }
-
-  .mobile-menu.active {
     display: flex;
   }
 
-  .mobile-menu a {
-    padding: 1rem;
-    color: #333333;
-    text-decoration: none;
-    border-bottom: 1px solid #eee;
+  .navbar {
+    padding: 0.8rem 1.5rem;
   }
 
-  .mobile-menu a:hover {
-    background: #a6bb8d;
-    color: #ffffff;
+  .logo {
+    font-size: 1.3rem;
   }
 }
