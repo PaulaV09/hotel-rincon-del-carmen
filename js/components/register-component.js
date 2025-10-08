@@ -79,7 +79,9 @@ export class RegisterComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = /* html */ `
-      <link rel="stylesheet" href="../../css/register.css">
+      <style rel="stylesheet">
+        @import "../../css/register.css";
+      </style>
       <div class="register-container">
         <h2>Crear cuenta</h2>
         <form class="register-form">

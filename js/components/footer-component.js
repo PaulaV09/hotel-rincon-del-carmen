@@ -12,7 +12,9 @@ export class FooterComponent extends HTMLElement {
     const year = new Date().getFullYear();
 
     this.shadowRoot.innerHTML = /* html */ `
-      <link rel="stylesheet" href="../../css/footer.css">
+      <style rel="stylesheet">
+        @import "../../css/footer.css";
+      </style>
       <footer class="footer">
         <div class="footer-wave">
           <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

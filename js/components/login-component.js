@@ -57,7 +57,9 @@ export class LoginComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = /* html */ `
-      <link rel="stylesheet" href="../../css/login.css">
+      <style rel="stylesheet">
+        @import "../../css/login.css";
+      </style>
 
       <div class="login-container">
         <h2>Iniciar sesión</h2>

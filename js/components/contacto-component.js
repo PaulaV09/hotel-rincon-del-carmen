@@ -10,7 +10,9 @@ export class ContactoComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = /* html */ `
-      <link rel="stylesheet" href="../../css/contacto.css">
+      <style rel="stylesheet">
+        @import "../../css/contacto.css";
+      </style>
 
       <section class="contacto-section">
         <div class="contacto-container">
