@@ -32,7 +32,6 @@ export class GsroomsComponent extends HTMLElement {
 
         <div id="roomList" class="room-list"></div>
 
-        <!-- Contenedor para formulario (modal o inline) -->
         <div id="roomFormContainer" class="room-form-overlay hidden"></div>
       </section>
     `;
@@ -157,7 +156,6 @@ export class GsroomsComponent extends HTMLElement {
       await postInfo("rooms", roomData);
     }
 
-    // Cerrar formulario y recargar lista
     this.querySelector("#roomFormContainer").classList.add("hidden");
     this.querySelector("#roomFormContainer").innerHTML = "";
     this.loadRooms();
