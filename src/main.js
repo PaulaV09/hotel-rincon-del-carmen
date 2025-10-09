@@ -6,4 +6,5 @@ import "../js/components/booking-component.js";
 import "../js/components/detalle-component.js";
 import "../js/components/mis-reservas-component.js";
 import "../js/components/perfil-component.js";
-
+import "../js/components/gsRooms-component.js";
+import "../js/components/gsBookings-component.js";

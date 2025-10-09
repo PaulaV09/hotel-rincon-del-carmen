@@ -115,8 +115,8 @@ export class NavComponent extends HTMLElement {
       `;
     } else if (role === "admin") {
       navLinks = `
-        <a href="../../pages/admin/dashboard.html">Gestionar habitaciones</a>
-        <a href="../../pages/admin/reservas.html">Gestionar reservas</a>
+        <a href="../../pages/admin/gsRooms.html">Gestionar habitaciones</a>
+        <a href="../../pages/admin/gsBookings.html">Gestionar reservas</a>
       `;
       userSection = `
         <div class="user-menu">
@@ -127,8 +127,8 @@ export class NavComponent extends HTMLElement {
         </div>
       `;
       mobileLinks = `
-        <a href="../../pages/admin/dashboard.html">Gestionar habitaciones</a>
-        <a href="../../pages/admin/reservas.html">Gestionar reservas</a>
+        <a href="../../pages/admin/gsRooms.html">Gestionar habitaciones</a>
+        <a href="../../pages/admin/gsBookings.html">Gestionar reservas</a>
         <a href="#" id="logout">Cerrar sesión</a>
       `;
     }

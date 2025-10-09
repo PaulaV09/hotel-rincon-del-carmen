@@ -44,7 +44,7 @@ export class LoginComponent extends HTMLElement {
         alert(`✅ Bienvenido, ${user.fullName}`);
 
         if (user.role === "admin") {
-          window.location.href = "../../pages/admin/dashboard.html";
+          window.location.href = "../../pages/admin/gsRooms.html";
         } else {
           window.location.href = "../../pages/user/inicio.html";
         }
