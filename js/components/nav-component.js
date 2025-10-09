@@ -94,12 +94,14 @@ export class NavComponent extends HTMLElement {
         <a href="../../pages/user/inicio.html">Inicio</a>
         <a href="../../pages/user/reservas.html">Reservas</a>
         <a href="../../pages/user/contacto.html">Contacto</a>
+        <a href="../../pages/user/mis-reservas.html">Mis Reservas</a>
       `;
       userSection = `
         <div class="user-menu">
           <span>Hola, ${userName} 👋</span>
           <div class="dropdown">
             <a href="#" id="logout">Cerrar sesión</a>
+            <a href="../../pages/user/perfil.html">Mi perfil</a>
           </div>
         </div>
       `;
@@ -107,6 +109,8 @@ export class NavComponent extends HTMLElement {
         <a href="../../pages/user/inicio.html">Inicio</a>
         <a href="../../pages/user/reservas.html">Reservas</a>
         <a href="../../pages/user/contacto.html">Contacto</a>
+        <a href="../../pages/user/mis-reservas.html">Mis Reservas</a>
+        <a href="../../pages/user/perfil.html">Mi perfil</a>
         <a href="#" id="logout">Cerrar sesión</a>
       `;
     } else if (role === "admin") {
