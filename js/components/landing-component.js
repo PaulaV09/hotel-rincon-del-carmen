@@ -1,4 +1,5 @@
 import { getInfo } from "../api/crudApi.js";
+import "/js/components/detalle-component.js";
 
 export class LandingComponent extends HTMLElement {
   constructor() {
@@ -49,7 +50,11 @@ export class LandingComponent extends HTMLElement {
             img: room.images?.[0] || "../../assets/images/default-room.jpg",
             title: room.title,
             price: `Desde COP ${room.pricePerNight} / noche`,
-            id: room.slug,
+            id: room.id,
+            description: room.description,
+            beds: room.beds,
+            maxGuests: room.maxGuests,
+            services: room.services,
           }));
       } else {
         console.warn("⚠️ No se obtuvieron habitaciones válidas desde la API.");
@@ -282,6 +287,14 @@ export class LandingComponent extends HTMLElement {
           <div class="slide-meta">
             <h4>${s.title}</h4>
             <p class="price">${s.price}</p>
+            <p class="desc">${s.description}</p>
+            <p class="info">🛏️ ${s.beds}</p>
+            <p class="info">👥 Max ${s.maxGuests} huéspedes</p>
+            <div class="services">
+              ${s.services
+                .map((sv) => `<span class="service-tag">${sv}</span>`)
+                .join("\n \n")}
+            </div>
             <button class="btn view-more" data-id="${s.id}">Ver más</button>
           </div>
         </div>
@@ -293,16 +306,22 @@ export class LandingComponent extends HTMLElement {
       dot.dataset.index = i;
       if (i === 0) dot.classList.add("active");
       this.$.dots.appendChild(dot);
+
+      slide.querySelector(".view-more").addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.openRoomDetail(s.id);
+      });
     });
+
+    this.openRoomDetail = (room) => {
+      const modal = document.createElement("detalle-component");
+      modal.setAttribute("room-id", room);
+      document.body.appendChild(modal);
+      document.body.style.overflow = "hidden";
+    };
 
     this.updateCarouselPosition();
-
-    this.$.carouselTrack.addEventListener("click", (e) => {
-      if (e.target.matches(".view-more")) {
-        const id = e.target.dataset.id;
-        window.location.href = `../../pages/user/reservas.html#${id}`;
-      }
-    });
   }
 
   updateCarouselPosition() {
