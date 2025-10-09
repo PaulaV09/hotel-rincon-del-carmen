@@ -123,7 +123,7 @@ export class DetalleHabitacion extends HTMLElement {
       endDate,
       guests,
       totalPrice,
-      status: "confirmed",
+      status: "confirmada",
       createdAt: new Date().toISOString(),
     };
 
