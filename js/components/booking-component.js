@@ -51,6 +51,7 @@ export class BookingComponent extends HTMLElement {
       const bookings = (await getInfo("bookings")) || [];
 
       this.filteredRooms = this.rooms.filter((room) => {
+        if (!room.active) return false;
         if (guests > room.maxGuests) return false;
 
         const isBooked = bookings.some((booking) => {
