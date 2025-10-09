@@ -87,6 +87,10 @@ json-server --watch db.json --port 3000
 
 Abre index.html en tu navegador o usa una extensión de servidor local como Live Server en Visual Studio Code.
 
+### Visualizar directamente
+
+[https://sparkling-strudel-ad93fc.netlify.app/](Ir al sitio web)
+
 ## 🗂️ Base de datos (db.json)
 
 La base de datos contiene tres colecciones principales:
